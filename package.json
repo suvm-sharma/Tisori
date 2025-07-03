@@ -1,0 +1,26 @@
+{
+    "name": "tisori",
+    "version": "1.0.0",
+    "description": "Creating tisori where user can signup, login & upload all their documents ",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "dev": "nodemon src/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/suvm-sharma/Tisori.git"
+    },
+    "author": "Shubham Kumar",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/suvm-sharma/Tisori/issues"
+    },
+    "homepage": "https://github.com/suvm-sharma/Tisori#readme",
+    "dependencies": {
+        "dotenv": "^16.3.1",
+        "express": "^5.1.0",
+        "mongoose": "^8.16.1",
+        "nodemon": "^3.1.10"
+    }
+}
