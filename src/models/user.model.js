@@ -7,7 +7,7 @@ const userSchema = new Schema(
             required: [true, "Please tell us your name!"],
             trim: true,
         },
-        image: {
+        profile_image: {
             type: String,
         },
         email: {
