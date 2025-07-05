@@ -2,7 +2,7 @@ import { z } from "zod";
 
 const userSchema = z.object({
     fullName: z.string(),
-    Image: z.string(),
+    // profile_image: z.string(),
     email: z
         .string()
         .email()

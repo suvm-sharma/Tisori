@@ -1,4 +1,9 @@
+import dotenv from "dotenv";
 import mongoose, { Schema } from "mongoose";
+import bcrypt from "bcryptjs";
+dotenv.config({
+    path: "./.env",
+});
 
 const userSchema = new Schema(
     {
@@ -28,5 +33,12 @@ const userSchema = new Schema(
         timestamps: true,
     }
 );
+
+userSchema.pre("save", async function (next) {
+    if (!this.isModified("password")) return next();
+    const salt = parseInt(process.env.SALT);
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+});
 
 export const User = mongoose.model("User", userSchema);

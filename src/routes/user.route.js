@@ -17,3 +17,5 @@ router.post(
     zodValidate(userSchema),
     registerUser
 );
+
+export default router;
