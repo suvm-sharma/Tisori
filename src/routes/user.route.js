@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { registerUser } from "../controllers/user.controller.js";
+import { registerUser, login } from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
 import zodValidate from "../middlewares/zodValidate.middleware.js";
-import { userSchema } from "../validator/user.validator.js";
+import { signup, vaidateLogin } from "../validator/user.validator.js";
 
 const router = Router();
 
@@ -14,8 +14,10 @@ router.post(
             maxCount: 1,
         },
     ]),
-    zodValidate(userSchema),
+    zodValidate(signup),
     registerUser
 );
+
+router.post("/login", zodValidate(vaidateLogin), login);
 
 export default router;
