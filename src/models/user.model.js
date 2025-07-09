@@ -22,6 +22,9 @@ const userSchema = new Schema(
             unique: true,
             lowecase: true,
         },
+        mobile_number: {
+            type: Number,
+        },
         password: {
             type: String,
             required: [true, "Please enter password"],
@@ -71,6 +74,14 @@ userSchema.methods.generateRefreshToken = function () {
             expiresIn: process.env.REFRESH_TOKEN_EXPIRY,
         }
     );
+};
+
+userSchema.statics.verifyJwt = function (token) {
+    try {
+        return jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
+    } catch (error) {
+        throw new Error("Invalid JWT");
+    }
 };
 
 export const User = mongoose.model("User", userSchema);
